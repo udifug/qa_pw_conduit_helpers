@@ -11,7 +11,7 @@ export async function createNewArticle(page, article) {
     const viewArticlePage = new ViewArticlePage(page);
 
     await homePage.clickNewArticleLink();
-    await createArticlePage.createArticle(article);
-    await viewArticlePage.assertArticleTitleIsVisible(article.title);
+    await createArticlePage.submitArticleForm(article);
+    await viewArticlePage.assertArticleHasCorrectTitle(article.title);
   })
 }

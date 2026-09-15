@@ -11,9 +11,10 @@ test.beforeEach(async ({ page }) => {
   homePage = new HomePage(page);
 
   user = {
-    email: 'test_new_users@gmail.com',
+    email: 'test_new_user@gmail.com',
     password: 'newpass123!',
   };
+  
 });
 
 test('Successful `Sign in` flow test', async () => {
