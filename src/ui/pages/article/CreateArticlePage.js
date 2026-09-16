@@ -84,5 +84,11 @@ export class CreateArticlePage {
       await expect(this.tagChipRemoveIcon(tag)).toHaveCount(0);
   });
 }
+
+  async assertArticleHasCorrectDescription(description) {
+    await test.step(`Assert article has correct description`, async () => {
+      await expect(this.descriptionField).toHaveValue(description);
+    })
+  }
   
 }

@@ -22,23 +22,21 @@ test.beforeEach(async ({ page }) => {
   await homePage.clickNewArticleLink();
 });
 
-test('Create an article wirh empty title', async () => {
-  
+test('Create an article with empty title', async () => {
   await createArticlePage.fillDescriptionField(article.description);
   await createArticlePage.fillTextField(article.text)
   await createArticlePage.clickPublishArticleButton();
   await createArticlePage.assertErrorMessageContainsText(TITLE_CANNOT_BE_EMPTY);
 });
 
-test('Create an article wirh empty description', async () => {
-  
+test('Create an article with empty description', async () => {
   await createArticlePage.fillTitleField(article.title);
   await createArticlePage.fillTextField(article.text);
   await createArticlePage.clickPublishArticleButton();
   await createArticlePage.assertErrorMessageContainsText(DESCRIPTION_CANNOT_BE_EMPTY);
 });
 
-test('Create an article wirh empty text', async () => {
+test('Create an article with empty text', async () => {
   await createArticlePage.fillTitleField(article.title);
   await createArticlePage.fillDescriptionField(article.description);
   await createArticlePage.clickPublishArticleButton();

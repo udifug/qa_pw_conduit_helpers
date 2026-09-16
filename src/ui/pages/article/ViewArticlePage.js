@@ -37,19 +37,23 @@ export class ViewArticlePage {
     });
   }
 
+
   async assertArticleTextIsVisible(text) {
     await test.step(`Assert the article has correct text`, async () => {
-      await expect(this.page.getByText(text)).toBeVisible();
+      await this.page.waitForURL(/\/article\//);
+      await this.page.reload();
+      await expect(this.page.getByText(text)).toHaveText(text);
     });
   }
 
   async assertArticleHasTags(tags) {
     await test.step(`Assert the article has correct tags`, async () => {
+      await this.page.waitForURL(/\/article\//);
+      await this.page.reload();
       for (const tag of tags) {
         await expect(this.page.getByText(tag, { exact: true })).toBeVisible();
-  }
+      }
     });
-  
   }
 
   async assertTagIsNotVisible(tag) {

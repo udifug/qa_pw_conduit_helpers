@@ -34,6 +34,8 @@ test('Edit the article description for the existing article', async () => {
   const article = generateNewArticleData();
   await createArticlePage.fillDescriptionField(article.description);
   await createArticlePage.clickUpdateButton();
+  await viewArticlePage.articleEditClick();
+  await createArticlePage.assertArticleHasCorrectDescription(article.description);
 });
 
 test('Edit the article text for the existing article', async () => {
@@ -59,5 +61,6 @@ test('Add the tag for the existing article with tags', async () => {
   await viewArticlePage.articleEditClick();
   const articleNew = generateNewArticleData(2);
   await createArticlePage.fillTagsField(articleNew.tags);
+  await createArticlePage.clickUpdateButton();
   await viewArticlePage.assertArticleHasTags(articleNew.tags);
 });
