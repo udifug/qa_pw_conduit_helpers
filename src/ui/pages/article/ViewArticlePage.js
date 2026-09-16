@@ -3,18 +3,19 @@ import { test, expect } from '@playwright/test';
 export class ViewArticlePage {
   constructor(page) {
     this.page = page;
-    this.articleTitleHeader = page.getByRole('heading', {level: 1});
-    this.articleEditButton = page.getByRole('link', { name: 'Edit Article' }).first();
+    this.articleTitleHeader = page.getByRole('heading', { level: 1 });
+    this.articleEditButton = page.getByRole(
+      'link', { name: 'Edit Article' }).first();
     this.profile = page.getByRole('link', { name: 'your profile image' });
   }
 
   async articleEditClick() {
     await test.step(`Article Edit button click`, async () => {
       await this.articleEditButton.click();
-    })
+    });
   }
 
-  
+
   async assertArticleHasCorrectTitle(title) {
     await test.step(`Assert the article has correct title'`, async () => {
       await expect(this.articleTitleHeader).toContainText(title);
@@ -61,7 +62,7 @@ export class ViewArticlePage {
       await this.page.waitForURL(/\/article\//);
       await this.page.reload();
       await expect(this.page.locator('.tag-pill').filter({ hasText: tag }))
-      .toHaveCount(0);
-    })
+        .toHaveCount(0);
+    });
   }
 }

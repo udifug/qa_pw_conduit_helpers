@@ -30,5 +30,7 @@ test('Creat an article with required fields', async () => {
   await createArticlePage.clickPublishArticleButton();
 
   await viewArticlePage.assertArticleHasCorrectTitle(article.title);
+  await createArticlePage.assertArticleHasCorrectDescription(
+    article.description);
   await viewArticlePage.assertArticleTextIsVisible(article.text);
 });

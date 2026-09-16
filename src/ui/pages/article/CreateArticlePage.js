@@ -34,7 +34,7 @@ export class CreateArticlePage {
 
   async fillTagsField(tags) {
     await test.step(`Fill the 'Tags' field`, async () => {
-      for (const tag of tags){
+      for (const tag of tags) {
         await this.tagsField.fill(tag);
         await this.tagsField.press('Enter');
       }
@@ -72,23 +72,22 @@ export class CreateArticlePage {
   }
 
   tagChipRemoveIcon(tag) {
-  return this.page
-    .locator('.tag-pill')
-    .filter({ hasText: tag })
-    .locator('i.ion-close-round');
-}
+    return this.page
+      .locator('.tag-pill')
+      .filter({ hasText: tag })
+      .locator('i.ion-close-round');
+  }
 
   async removeTag(tag) {
     await test.step(`Remove the '${tag}' tag`, async () => {
       await this.tagChipRemoveIcon(tag).click();
       await expect(this.tagChipRemoveIcon(tag)).toHaveCount(0);
-  });
-}
+    });
+  }
 
   async assertArticleHasCorrectDescription(description) {
     await test.step(`Assert article has correct description`, async () => {
       await expect(this.descriptionField).toHaveValue(description);
-    })
+    });
   }
-  
 }
